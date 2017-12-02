@@ -14,7 +14,7 @@ mongoose.Promise = global.Promise;
 // test db connection
 const db = mongoose.connection;
 db.on('error', (err) => console.log(err.message));
-db.on('connected', () => console.log('Mongo running: ', mongoURI));
+db.on('connected', () => console.log('Mongo Running Port: ', mongoURI));
 
 // Middleware
 app.use(express.urlencoded({ extended: false}));
@@ -27,16 +27,16 @@ app.use(session({
 }));
 
 // Controllers
-const sessionController = require('./controllers/session.js');
-const timesheetController = require('./controllers/timesheet.js');
+//const sessionController = require('./controllers/session.js');
+//const timesheetController = require('./controllers/timesheet.js');
 const homeController = require('./controllers/home.js')
 
-app.use('/user', sessionsController);
-app.use('/timesheet', timesheetController);
+//app.use('/user', sessionController);
+//app.use('/timesheet', timesheetController);
 app.use('/home', homeController);
 
 
-// root route
+// Root Route
 app.get('/', (req, res) => res.redirect('/home'));
 
 
