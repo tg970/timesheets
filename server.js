@@ -17,6 +17,7 @@ db.on('error', (err) => console.log(err.message));
 db.on('connected', () => console.log('Mongo Running Port: ', mongoURI));
 
 // Middleware
+app.use(express.static ('public'));
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 app.use(morgan('dev'));
