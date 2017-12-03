@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <% include ../partials/head.ejs %>
+   </head>
+   <body>
+      <h1>Login Page</h1>
+      <div class="loginForm">
+         <form action="/user/login" method="post">
+            <div class="form-group loginFeild">
+               <label for="username">Username</label>
+               <input class="form-control" id="username" placeholder="Enter Username" name="username" /> <br />
+            </div>
+            <div class="form-group loginFeild">
+               <label for="password">Password</label>
+               <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" /> <br />
+            </div>
+            <% if (message) { %>
+               <p><%=message%></p>
+            <% } %>
+            <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+      </div>
+      <% include ../partials/scripts.ejs %>
+   </body>
+</html>
