@@ -29,11 +29,11 @@ app.use(session({
 
 // Controllers
 //const sessionController = require('./controllers/session.js');
-//const timesheetController = require('./controllers/timesheet.js');
+const timesheetController = require('./controllers/timesheet.js');
 const homeController = require('./controllers/home.js')
 
 //app.use('/user', sessionController);
-//app.use('/timesheet', timesheetController);
+app.use('/timesheet', timesheetController);
 app.use('/home', homeController);
 
 
