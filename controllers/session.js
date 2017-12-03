@@ -34,13 +34,25 @@ router.get('/newUser', (req, res) => {
 	res.render('pages/newUser.ejs', {})
 });
 
-router.post('/newUser', async (req, res, next) => {
+router.post('/newUser', async (req, res) => {
+   //console.log(req.body);
    //Hash Password
    const passwordHash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
    // Create a object for db entry
    const userDbEntry = {};
    userDbEntry.username = req.body.username;
-   userDbEntry.password = passwordHash
+   userDbEntry.password = passwordHash;
+   userDbEntry.name = req.body.name
+   if (req.body.admin) {
+      userDbEntry.admin = true;
+   } else {
+      userDbEntry.admin = false;
+   }
+   if (req.body.super) {
+      userDbEntry.super = true;
+   } else {
+      userDbEntry.super = false;
+   }
    // New User db entry
    try {
       const user = await User.create(userDbEntry)

@@ -7,13 +7,29 @@
       <h1>New User Setup</h1>
       <div class="userSetupForm">
          <form action="/user/newUser" method="post">
-            <div class="form-group loginFeild">
+            <div class="form-group">
                <label for="username">Username</label>
                <input class="form-control" id="username" placeholder="Enter Username" name="username" /> <br />
             </div>
-            <div class="form-group loginFeild">
+            <div class="form-group">
                <label for="password">Password</label>
                <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" /> <br />
+            </div>
+            <div class="form-group">
+               <label for="name">Name</label>
+               <input class="form-control" id="name" placeholder="First Last" name="name" /> <br />
+            </div>
+            <div class="form-check">
+               <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" name="admin">
+                  Administrator
+               </label>
+            </div>
+            <div class="form-check">
+               <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" name="super">
+                  Supervisor
+               </label>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
          </form>

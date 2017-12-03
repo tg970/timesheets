@@ -2,7 +2,7 @@ const express  = require('express');
 const session  = require('express-session');
 const mongoose = require('mongoose');
 const morgan   = require('morgan');
-const bcrypt   = require('bcrypt');
+//const bcrypt   = require('bcrypt');
 const app      = express();
 const PORT     = 3000;
 
