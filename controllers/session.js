@@ -3,7 +3,7 @@ const router = express.Router();
 const User   = require('../models/users');
 const bcrypt = require('bcrypt');
 
-router.get('/login', (req, res) => {  //any route will work
+router.get('/login', (req, res) => {
 	res.render('pages/login.ejs', {
       message: req.session.message
    })
@@ -29,5 +29,30 @@ router.post('/login', async (req, res) => {
       res.redirect('/user/login')
    }
 });
+
+router.get('/newUser', (req, res) => {
+	res.render('pages/newUser.ejs', {})
+});
+
+router.post('/newUser', async (req, res, next) => {
+   //Hash Password
+   const passwordHash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+   // Create a object for db entry
+   const userDbEntry = {};
+   userDbEntry.username = req.body.username;
+   userDbEntry.password = passwordHash
+   // New User db entry
+   try {
+      const user = await User.create(userDbEntry)
+      console.log(user)
+      req.session.username = user.username;
+      req.session.logged  = true;
+      res.redirect('/')
+   } catch(err) {
+      console.log(err.message);
+   }
+})
+
+
 
 module.exports = router;
