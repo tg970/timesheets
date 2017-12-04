@@ -14,7 +14,9 @@ router.post('/login', async (req, res) => {
       const user = await User.findOne({username: req.body.username});
       if (bcrypt.compareSync(req.body.password, user.password)) {
         req.session.message = '';
-        req.session.username = req.body.username;
+        req.session.name = user.name;
+        req.session.super = user.super;
+        req.session.admin = user.admin;
         req.session.logged  = true;
         //console.log(req.session, req.body)
         res.redirect('/')
@@ -69,6 +71,5 @@ router.get('/logout', (req, res) => {
    req.session.destroy();
    res.redirect('/');
 });
-
 
 module.exports = router;

@@ -11,4 +11,15 @@ router.get('/new', (req, res) => {
    };
 });
 
+router.post('/newTS', async (req, res) => {
+   try {
+      console.log(req.body);
+      //const timeRec = Timesheet.create(req.body)
+      //console.log(timeRec);
+      res.redirect('/timesheet/new')
+   } catch (err) {
+      console.log(err.message);
+   }
+})
+
 module.exports = router;
