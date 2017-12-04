@@ -22,6 +22,8 @@ router.post('/newTS', async (req, res) => {
    try {
       let newTimeRec = req.body
       newTimeRec.name = req.session.name
+      // add userid to newTimeRec
+      // rate and math for time rec charge
       //console.log(newTimeRec);
       const timeRec = await TimeSheet.create(newTimeRec)
       req.session.timeRecs.push(timeRec.id)

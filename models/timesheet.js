@@ -6,6 +6,8 @@ const TimeSchema = new mongoose.Schema({
    act: String,
    desc: String,
    time: Number,
+   //user db id
+   // total charge
 });
 
 module.exports = mongoose.model('TimeRec', TimeSchema)
