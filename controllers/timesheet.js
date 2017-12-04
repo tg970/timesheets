@@ -1,6 +1,7 @@
 // TIMESHEET CONTROLLER
 const express = require('express');
 const router  = express.Router();
+const TimeSheet   = require('../models/timesheet');
 
 // New Route
 router.get('/new', (req, res) => {
@@ -13,9 +14,9 @@ router.get('/new', (req, res) => {
 
 router.post('/newTS', async (req, res) => {
    try {
-      console.log(req.body);
-      //const timeRec = Timesheet.create(req.body)
-      //console.log(timeRec);
+      //console.log(req.body);
+      const timeRec = TimeSheet.create(req.body)
+      console.log(timeRec);
       res.redirect('/timesheet/new')
    } catch (err) {
       console.log(err.message);
