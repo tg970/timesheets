@@ -17,6 +17,7 @@ router.post('/login', async (req, res) => {
         req.session.name = user.name;
         req.session.super = user.super;
         req.session.admin = user.admin;
+		  req.session.timeRecs = [];
         req.session.logged  = true;
         //console.log(req.session, req.body)
         res.redirect('/')

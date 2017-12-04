@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const TimeSchema = new mongoose.Schema({
+   name: String,
    prop: String,
    act: String,
    desc: String,

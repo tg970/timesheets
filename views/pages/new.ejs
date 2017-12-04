@@ -5,6 +5,22 @@
    </head>
    <body>
       <h1>New TimeSheet Page</h1>
+      <% for (let row in timeRecs) { %>
+       <div class="row">
+         <div class="form-group col-md-3 mb-3">
+            <p><%=timeRecs[row].prop%></p>
+         </div>
+         <div class="form-group col-md-3 mb-3">
+            <p><%=timeRecs[row].act%></p>
+         </div>
+         <div class="form-group col-md-3 mb-3">
+            <p><%=timeRecs[row].desc%></p>
+         </div>
+         <div class="form-group col-md-3 mb-3">
+            <p><%=timeRecs[row].time%></p>
+         </div>
+       </div>
+      <% } %>
       <form action="/timesheet/newTS" method="post" id="needs-validation" novalidate>
          <div class="row">
             <div class="form-group col-md-3 mb-3">
