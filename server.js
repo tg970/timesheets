@@ -2,12 +2,13 @@ const express  = require('express');
 const session  = require('express-session');
 const mongoose = require('mongoose');
 const morgan   = require('morgan');
-//const bcrypt   = require('bcrypt');
 const app      = express();
-const PORT     = 3000;
 
-// connect to database
-const mongoURI = 'mongodb://localhost:27017/timesheet_app';
+// set port, process.env.PORT
+const PORT     = process.env.PORT || 3000;
+
+// connect to database, process.env.MONGODB_URI
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/timesheet_app';
 mongoose.connect(mongoURI, { useMongoClient: true});
 mongoose.Promise = global.Promise;
 
@@ -39,7 +40,6 @@ app.use('/home', homeController);
 
 // Root Route
 app.get('/', (req, res) => res.redirect('/home'));
-
 
 // :ear
 app.listen(PORT, () => {
