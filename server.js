@@ -2,6 +2,7 @@ const express  = require('express');
 const session  = require('express-session');
 const mongoose = require('mongoose');
 const morgan   = require('morgan');
+const methodOverride = require('method-override');
 const app      = express();
 
 // set port, process.env.PORT
@@ -21,6 +22,7 @@ db.on('connected', () => console.log('Mongo Running Port: ', mongoURI));
 app.use(express.static ('public'));
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
+app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 app.use(session({
 	 secret: "kickasstakenames",

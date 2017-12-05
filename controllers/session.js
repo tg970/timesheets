@@ -59,7 +59,7 @@ router.post('/newUser', async (req, res) => {
    // New User db entry
    try {
       const user = await User.create(userDbEntry)
-      console.log(user)
+      //console.log(user)
       req.session.username = user.username;
       req.session.logged  = true;
       res.redirect('/')
