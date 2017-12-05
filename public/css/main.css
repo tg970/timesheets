@@ -1,6 +1,6 @@
-/** {
+* {
    border: .25px solid green;
-}*/
+}
 
 .loginForm {
    width: 25%;
@@ -19,4 +19,25 @@
 .newAccount {
    margin-top: 1em;
    width: 75%;
+}
+
+p {
+   margin-bottom: 0px;
+   line-height: 2;
+   padding-left: 1em;
+}
+
+.row {
+   margin-right: 0px;
+   margin-left: 0px;
+}
+
+/*.form-group {
+   align-items: center;
+}*/
+
+@media (min-width: 576px) {
+   .editCont {
+      padding-left: 0px;
+   }
 }

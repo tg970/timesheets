@@ -5,45 +5,47 @@
    </head>
    <body>
       <h1>New TimeSheet Page</h1>
-      <% console.log('edit id:',editId); %>
-      <% console.log('oneRec:',oneRec); %>
-      <% console.log('timeRecs:',timeRecs); %>
       <% for (let row in timeRecs) { %>
-         <% console.log('for loop:', timeRecs[row]._id); %>
          <% if (timeRecs[row]._id === editId) {
             hotRow = true %>
             <form action="/timesheet/<%=timeRecs[row]._id%>?_method=PUT" method="POST" id="needs-validation" novalidate>
          <% } %>
             <div class="row">
-               <div class="form-group col-md-3 mb-3">
+               <div class="form-group col-sm-3">
                   <% if (hotRow) { %>
                      <input type="hidden" class="form-control" value="<%=timeRecs[row].prop%>" name="prop" required>
                   <% } %>
                      <p><%=timeRecs[row].prop%></p>
                </div>
-               <div class="form-group col-md-3 mb-3">
+               <div class="form-group col-sm-3">
                   <% if (hotRow) { %>
                      <input type="hidden" class="form-control" value="<%=timeRecs[row].act%>" name="act" required>
                   <% } %>
                      <p><%=timeRecs[row].act%></p>
                </div>
-               <div class="form-group col-md-3 mb-3">
+               <div class="form-group col-sm-3">
                   <% if (hotRow) { %>
                      <input type="text" class="form-control" value="<%=timeRecs[row].desc%>" name="desc" required>
                   <% } else { %>
                      <p><%=timeRecs[row].desc%></p>
                   <%}%>
                </div>
-               <div class="form-group col-md-2 mb-3">
+               <div class="form-group col-sm-2">
                   <% if (hotRow) { %>
-                     <input type="text" class="form-control" value="<%=timeRecs[row].time%>" name="time" required>
+                     <input type="text" class="form-control" value="<%=timeRecs[row].time%>" name="time" min="0" step=".25" required>
+                     <div class="invalid-feedback">
+                        Please provide a comment.
+                     </div>
                   <% } else { %>
                      <p><%=timeRecs[row].time%></p>
                   <%}%>
                </div>
-               <div class="form-group col-md-1 mb-3">
+               <div class="form-group col-sm-1 editCont">
                   <% if (!edit) { %>
-                     <button type="submit" class="btn" onclick="location.href = '/timesheet/edit/<%=timeRecs[row]._id%>';">Edit</button>
+                     <button type="submit" class="btn btn-sm" onclick="location.href = '/timesheet/edit/<%=timeRecs[row]._id%>';">Edit</button>
+                     <div class="invalid-feedback">
+                        Provide Time or Round.
+                     </div>
                   <% } %>
                   <% if (hotRow) { %>
                      <button type="submit" class="btn btn-success btn-sm">Done</button>
@@ -60,8 +62,8 @@
          <% if (edit) { %>
             <fieldset disabled>
          <%}%>
-            <div class="row">
-               <div class="form-group col-md-3 mb-3">
+            <div class="row align-items-center justify-content-around">
+               <div class="form-group col-md-3">
                   <select class="form-control" name="prop" required>
                      <option selected>Property</option>
                      <option>Bronze Tree</option>
@@ -73,7 +75,7 @@
                      <option>West</option>
                   </select>
                </div>
-               <div class="form-group col-md-3 mb-3">
+               <div class="form-group col-md-3">
                   <select class="form-control" name="act" required>
                      <option selected>Activity</option>
                      <option>Hot Tub</option>
@@ -85,13 +87,13 @@
                      <option>Recycle</option>
                   </select>
                </div>
-               <div class="form-group col-md-3 mb-3">
+               <div class="form-group col-md-3">
                   <input type="text" class="form-control" placeholder="Description" name="desc" required>
                   <div class="invalid-feedback">
                      Please provide a comment.
                   </div>
                </div>
-               <div class="form-group col-md-3 mb-3">
+               <div class="form-group col-md-3">
                   <input type="number" class="form-control" placeholder="Time" name="time" min="0" step=".25" required>
                   <div class="invalid-feedback">
                      Provide Time or Round.

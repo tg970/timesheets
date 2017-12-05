@@ -13,7 +13,7 @@ router.get('/new', async (req, res) => {
          timeArr.push(timeRec)
       }
       let oneRec = await TimeSheet.findById(req.params.id)
-      console.log('timeArr:',timeArr);
+      //console.log('timeArr:',timeArr);
       res.render('pages/newTimesheet.ejs', {
          timeRecs:timeArr,
          edit:false,
