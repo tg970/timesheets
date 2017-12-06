@@ -6,8 +6,8 @@ const router  = express.Router();
 
 // Index Route
 router.get('/', (req, res) => {
-   if (req.session.logged) { 
-      res.render('pages/home.ejs');
+   if (req.session.logged) {
+      res.render('pages/home.ejs', {user:req.session});
    } else {
       res.redirect('/user/login');
    };
