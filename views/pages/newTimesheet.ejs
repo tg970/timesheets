@@ -5,13 +5,27 @@
    </head>
    <body>
       <h1>New TimeSheet Page</h1>
+      <% let loopCt = 0%>
+      <% console.log('editID:', editId); %>
+
       <% for (let row in timeRecs) { %>
-         <% if (timeRecs[row]._id === editId) {
-            hotRow = true %>
-            <form action="/timesheet/<%=timeRecs[row]._id%>?_method=PUT" method="POST" id="needs-validation" novalidate>
+         <div class="row">
+         <div class="form-group col-sm-1">
+         <% console.log('timeRecs[row]._id:', timeRecs[row]._id); %>
+         <% console.log('for loop:', loopCt); %>
+         <% if (timeRecs[row]._id == editId) {
+            hotRow = true
+            console.log('hotRow');%>
+            <form action="/timesheet/<%=timeRecs[row]._id%>/<%=loopCt%>?_method=DELETE" method="POST">
+                     <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
+                  </form>
+            <% } %>
+         </div>
+         <% if (hotRow) {%>
+            <form class= "row" action="/timesheet/<%=timeRecs[row]._id%>/?_method=PUT" method="POST" id="needs-validation" novalidate>
          <% } %>
-            <div class="row">
-               <div class="form-group col-sm-3">
+
+               <div class="form-group col-sm-2">
                   <% if (hotRow) { %>
                      <input type="hidden" class="form-control" value="<%=timeRecs[row].prop%>" name="prop" required>
                   <% } %>
@@ -26,6 +40,9 @@
                <div class="form-group col-sm-3">
                   <% if (hotRow) { %>
                      <input type="text" class="form-control" value="<%=timeRecs[row].desc%>" name="desc" required>
+                     <div class="invalid-feedback">
+                        Please provide a comment.
+                     </div>
                   <% } else { %>
                      <p><%=timeRecs[row].desc%></p>
                   <%}%>
@@ -34,7 +51,7 @@
                   <% if (hotRow) { %>
                      <input type="text" class="form-control" value="<%=timeRecs[row].time%>" name="time" min="0" step=".25" required>
                      <div class="invalid-feedback">
-                        Please provide a comment.
+                        Provide Time or Round.
                      </div>
                   <% } else { %>
                      <p><%=timeRecs[row].time%></p>
@@ -43,21 +60,20 @@
                <div class="form-group col-sm-1 editCont">
                   <% if (!edit) { %>
                      <button type="submit" class="btn btn-sm" onclick="location.href = '/timesheet/edit/<%=timeRecs[row]._id%>';">Edit</button>
-                     <div class="invalid-feedback">
-                        Provide Time or Round.
-                     </div>
                   <% } %>
                   <% if (hotRow) { %>
                      <button type="submit" class="btn btn-success btn-sm">Done</button>
                   <% } %>
                </div>
-            </div>
          <% if (hotRow) { %>
             </form>
             <% hotRow = false %>
          <% } %>
+         <% loopCt += 1 %>
 
+         </div>
       <% } %>
+
       <form action="/timesheet/newTS" method="post" id="needs-validation" novalidate>
          <% if (edit) { %>
             <fieldset disabled>
@@ -94,7 +110,7 @@
                   </div>
                </div>
                <div class="form-group col-md-3">
-                  <input type="number" class="form-control" placeholder="Time" name="time" min="0" step=".25" required>
+                  <input type="number" class="form-control" placeholder="Time" name="time" min=".25" step=".25" required>
                   <div class="invalid-feedback">
                      Provide Time or Round.
                   </div>

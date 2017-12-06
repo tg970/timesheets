@@ -43,14 +43,14 @@ router.post('/newTS', async (req, res) => {
 
 router.get('/edit/:id', async (req,res) => {
    let oneRec = await TimeSheet.findById(req.params.id)
-   // let timeArr = []
-   // for (let row in req.session.timeRecs) {
-   //    let timeRec = await TimeSheet.findById(req.session.timeRecs[row]);
-   //    timeArr.push(timeRec)
-   // }
-   console.log('edit route, oneRec:', oneRec);
+   let timeArr = []
+   for (let row in req.session.timeRecs) {
+      let timeRec = await TimeSheet.findById(req.session.timeRecs[row]);
+      timeArr.push(timeRec)
+   }
+   //console.log('edit route, oneRec:', oneRec);
    res.render('pages/newTimesheet.ejs', {
-      timeRecs:req.session.timeRecs,
+      timeRecs:timeArr,
       edit:true,
       editId:req.params.id,
       hotRow:null,
@@ -65,5 +65,14 @@ router.put('/:id', async (req, res) => {
    const editedTimeRec = await TimeSheet.findByIdAndUpdate(req.params.id, req.body);
    res.redirect('/timesheet/new')
 });
+
+router.delete('/:id/:index', async (req, res) => {
+   console.log('delete route firing');
+   const delTimeRec = await TimeSheet.findByIdAndRemove(req.params.id);
+   req.session.timeRecs.splice(req.params.index,1);
+   res.redirect('/timesheet/new');
+});
+
+
 
 module.exports = router;
