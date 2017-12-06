@@ -11,11 +11,8 @@
       <% for (let row in timeRecs) { %>
          <div class="row">
          <div class="form-group col-sm-1">
-         <% console.log('timeRecs[row]._id:', timeRecs[row]._id); %>
-         <% console.log('for loop:', loopCt); %>
          <% if (timeRecs[row]._id == editId) {
-            hotRow = true
-            console.log('hotRow');%>
+            hotRow = true %>
             <form action="/timesheet/<%=timeRecs[row]._id%>/<%=loopCt%>?_method=DELETE" method="POST">
                      <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
                   </form>
