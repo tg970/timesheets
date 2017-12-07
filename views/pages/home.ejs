@@ -4,7 +4,12 @@
       <% include ../partials/head.ejs %>
    </head>
    <body>
-      <h1>Hello and Welcome to TimeSheets</h1>
+      <% include ../partials/header.ejs %>
+      <div class="container welcome">
+         <blockquote class="blockquote text-center">
+            <h1>Welcome to TimeSheets IO</h1>
+         </blockquote>
+      </div>
       <div class="jumbotron">
          <button type="button" class="btn btn-primary btn-lg btn-block home" onclick="location.href = '/timesheet/new';">New Time Sheet</button>
          <% if (user.admin) { %>
