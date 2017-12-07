@@ -36,6 +36,14 @@ p {
    align-items: center;
 }*/
 
+.jumbotron {
+   background-color: transparent;
+}
+
+.home {
+   margin-bottom: 1em;
+}
+
 @media (min-width: 576px) {
    .editCont {
       padding-left: 0px;
