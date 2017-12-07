@@ -19,7 +19,8 @@ router.get('/new', async (req, res) => {
          edit:false,
          editId:null,
          hotRow:null,
-         oneRec:null
+         oneRec:null,
+         user: req.session
       });
    } else {
       res.redirect('/user/login');
@@ -54,7 +55,8 @@ router.get('/edit/:id', async (req,res) => {
       edit:true,
       editId:req.params.id,
       hotRow:null,
-      oneRec:oneRec
+      oneRec:oneRec,
+      user: req.session
    });
    //console.log(req.session.timeRecs);
    //res.send('edit route working')

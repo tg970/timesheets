@@ -44,6 +44,30 @@ p {
    margin-bottom: 1em;
 }
 
+.tsFoot {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   background-color: #D4D4D4;
+   margin: 3em 5em;
+}
+
+.tsSub {
+   position: absolute;
+   right: 2em;
+   margin-bottom: 1em;
+   /*margin: 0 auto;*/
+}
+
+.name {
+   position: absolute;
+   right: 2em;
+}
+
+.pageTitle {
+   padding: 15px;
+}
+
 @media (min-width: 576px) {
    .editCont {
       padding-left: 0px;

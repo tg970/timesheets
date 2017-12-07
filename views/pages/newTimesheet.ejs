@@ -4,9 +4,11 @@
       <% include ../partials/head.ejs %>
    </head>
    <body>
-      <h1>New TimeSheet Page</h1>
+      <%# console.log('userInfo:', user); %>
+      <% include ../partials/header.ejs %>
+      <h2 class="pageTitle"><u>Create A New TimeSheet</u></h2>
       <% let loopCt = 0 %>
-      <% console.log('editID:', editId); %>
+      <%# console.log('editID:', editId); %>
       <% let sumTime = 0 %>
       <% for (let row in timeRecs) { %>
          <div class="row">
@@ -14,8 +16,8 @@
          <% if (timeRecs[row]._id == editId) {
             hotRow = true %>
             <form action="/timesheet/<%=timeRecs[row]._id%>/<%=loopCt%>?_method=DELETE" method="POST">
-                     <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
-                  </form>
+                  <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
+            </form>
             <% } %>
          </div>
          <% if (hotRow) {%>
@@ -113,12 +115,12 @@
                   </div>
                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary tsSub">Save & New Row</button>
          <% if (edit) { %></fieldset><%}%>
       </form>
-      <div>
+      <div class="jumbotron tsFoot">
          <h3> Total Time For Today: <%=sumTime%></h3>
-         <button onclick="location.href = '/user/logout';">Submit Time & Logout</button>
+         <button class="btn btn-dark btn-lg" onclick="location.href = '/user/logout';">Submit Time & Logout</button>
       </div>
       <% include ../partials/scripts.ejs %>
    </body>
