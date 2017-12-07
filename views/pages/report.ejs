@@ -4,7 +4,43 @@
       <% include ../partials/head.ejs %>
    </head>
    <body>
-      <h1>Reports Page</h1>
+      <% include ../partials/header.ejs %>
+      <h1>Reports</h1>
+      <form action="/report/run" method="POST" id="needs-validation" novalidate>
+         <div class="form-group col-md-3">
+            <select class="form-control" name="name" required>
+               <option selected>Name</option>
+               <% for (let rec in userArr) { %>
+                  <option><%=userArr[rec].name%></option>
+               <% } %>
+            </select>
+         </div>
+         <button type="submit" class="btn btn-primary run">Run</button>
+      </form>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Property</th>
+            <th scope="col">Description</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+         <% let loopCt = 1 %>
+         <% for (let row in dataArr) { %>
+            <tr>
+               <th scope="row"><%=loopCt%></th>
+               <td><%=dataArr[row].name%></td>
+               <td><%=dataArr[row].prop%></td>
+               <td><%=dataArr[row].desc%></td>
+               <td><%=dataArr[row].time%></td>
+            </tr>
+            <% loopCt += 1 %>
+         <% } %>
+        </tbody>
+      </table>
       <% include ../partials/scripts.ejs %>
    </body>
 </html>

@@ -115,6 +115,10 @@ h1 {
    margin-top: 2em;
 }
 
+.run {
+   margin-left: 15px;
+}
+
 @media (min-width: 576px) {
    .editCont {
       padding-left: 0px;
