@@ -16,14 +16,24 @@ router.get('/', async (req, res) => {
 
 router.post('/run', async (req, res) => {
    console.log('body:', req.body);
+   searchParams = {}
+   if (req.body.name) { searchParams.name = req.body.name }
+   if (req.body.prop) { searchParams.prop = req.body.prop }
+   if (req.body.act) { searchParams.act = req.body.act }
+   console.log(searchParams);
    const userArr = await User.find();
-   const dataArr = await TimeSheet.find(req.body)
+   const dataArr = await TimeSheet.find(searchParams)
    //console.log(dataArr);
    res.render('pages/report.ejs', {
       user: req.session,
       userArr: userArr,
       dataArr: dataArr
    })
+   // res.send({
+   //    user: req.session,
+   //    userArr: userArr,
+   //    dataArr: dataArr
+   // })
 });
 
 

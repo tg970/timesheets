@@ -119,6 +119,16 @@ h1 {
    margin-left: 15px;
 }
 
+.table {
+   margin: 15px;
+   max-width: 97%;
+}
+
+.userSetupForm {
+   max-width: 75%;
+   margin: 15px;
+}
+
 @media (min-width: 576px) {
    .editCont {
       padding-left: 0px;

@@ -6,16 +6,45 @@
    <body>
       <% include ../partials/header.ejs %>
       <h1>Reports</h1>
-      <form action="/report/run" method="POST" id="needs-validation" novalidate>
-         <div class="form-group col-md-3">
-            <select class="form-control" name="name" required>
-               <option selected>Name</option>
-               <% for (let rec in userArr) { %>
-                  <option><%=userArr[rec].name%></option>
-               <% } %>
-            </select>
+      <form action="/report/run" method="POST">
+         <div class="row">
+            <div class="form-group col-md-3">
+               <label for="name">Name</label>
+               <select class="form-control" name="name" id="name">
+                  <option selected></option>
+                  <% for (let rec in userArr) { %>
+                     <option><%=userArr[rec].name%></option>
+                  <% } %>
+               </select>
+            </div>
+            <div class="form-group col-md-3">
+               <label for="prop">Property</label>
+               <select class="form-control" name="prop" id="prop">
+                  <option selected></option>
+                  <option>Bronze Tree</option>
+                  <option>Club A</option>
+                  <option>Club B</option>
+                  <option>Club C</option>
+                  <option>Highmark</option>
+                  <option>Ranch</option>
+                  <option>West</option>
+               </select>
+            </div>
+            <div class="form-group col-md-3">
+               <label for="act">Activity</label>
+               <select class="form-control" name="act" id="act">
+                  <option selected></option>
+                  <option>Hot Tub</option>
+                  <option>Building Maint</option>
+                  <option>Snow Shovel</option>
+                  <option>Snow Plow</option>
+                  <option>Painting</option>
+                  <option>Trash</option>
+                  <option>Recycle</option>
+               </select>
+            </div>
+            <button type="submit" class="btn btn-primary run">Run</button>
          </div>
-         <button type="submit" class="btn btn-primary run">Run</button>
       </form>
       <table class="table table-striped">
         <thead class="thead-dark">
@@ -23,6 +52,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Property</th>
+            <th scope="col">Activity</th>
             <th scope="col">Description</th>
             <th scope="col">Time</th>
           </tr>
@@ -34,6 +64,7 @@
                <th scope="row"><%=loopCt%></th>
                <td><%=dataArr[row].name%></td>
                <td><%=dataArr[row].prop%></td>
+               <td><%=dataArr[row].act%></td>
                <td><%=dataArr[row].desc%></td>
                <td><%=dataArr[row].time%></td>
             </tr>
