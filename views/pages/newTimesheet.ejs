@@ -119,8 +119,8 @@
          <% if (edit) { %></fieldset><%}%>
       </form>
       <div class="jumbotron tsFoot">
-         <h3> Total Time For Today: <%=sumTime%></h3>
-         <button class="btn btn-dark btn-lg" onclick="location.href = '/user/logout';">Submit Time & Logout</button>
+         <h3 class="totalTime"> Total Time For Today: <%=sumTime%></h3>
+         <button class="btn btn-outline-light btn-lg" onclick="location.href = '/user/logout';">Submit Time & Logout</button>
       </div>
       <% include ../partials/scripts.ejs %>
    </body>

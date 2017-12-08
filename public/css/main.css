@@ -38,6 +38,10 @@ p {
    margin-left: 0px;
 }
 
+.totalTime {
+   color: white;
+}
+
 /*.form-group {
    align-items: center;
 }*/
