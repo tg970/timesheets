@@ -61,8 +61,8 @@ router.post('/newUser', async (req, res) => {
    try {
       const user = await User.create(userDbEntry)
       //console.log(user)
-      req.session.username = user.username;
-      req.session.logged  = true;
+      // req.session.username = user.username;
+      // req.session.logged  = true;
       res.redirect('/')
    } catch(err) {
       console.log(err.message);
