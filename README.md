@@ -8,6 +8,12 @@
 
 <hr>
 
+### Link to Live Site:
+
+https://timesheets-io.herokuapp.com/
+
+<hr>
+
 ## Overview
 
 TimeSheet IO is a cloud-based time keeping system for hospitality professionals. The program makes it easy for anyone to track their daily tasks in a quick and efficient manner, minimizing errors and streamlining the billing process.
@@ -24,4 +30,4 @@ Clicking the blue 'New TimeSheet' button on the home page leads the user to the 
 
 ## Reports
 
-By clicking the green 'Reports' button on the home page, the admin user is directed to the reports page. The user can select their criteria for their report. Then by clicking 'Run', the information matching the query is displayed. 
+By clicking the green 'Reports' button on the home page, the admin user is directed to the reports page. The user can select their criteria for their report. Then by clicking 'Run', the information matching the query is displayed.
