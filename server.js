@@ -10,7 +10,7 @@ const PORT     = process.env.PORT || 3000;
 
 // connect to database, process.env.MONGODB_URI
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/timesheet_app';
-mongoose.connect(mongoURI, { useMongoClient: true});
+mongoose.connect(mongoURI);
 mongoose.Promise = global.Promise;
 
 // test db connection
